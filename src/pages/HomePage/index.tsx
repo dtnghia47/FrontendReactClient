@@ -33,7 +33,7 @@ export const HomePage = memo(() => {
   return (
     <>
       <Layout>
-        <h1>
+        <h1 className="title-page">
           Home page
         </h1>
         <HomePageWrapper>

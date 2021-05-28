@@ -23,7 +23,7 @@ export const CountPage = memo(() => {
       <Layout>
         <h1>Count Page</h1>
         <CountWrapper>
-          <Number>
+          <Number className="number">
             {number}
           </Number>
           <div>
