@@ -6,21 +6,32 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import "./App.css";
+import { useDispatch } from 'react-redux';
 
+import "./App.scss";
 import { HomePage } from "./pages/HomePage/loadable";
 import { CountPage } from "./pages/CountPage/loadable";
+import { ThemeProvider } from "./styles/theme/provider";
+import { getTheme } from "./styles/theme/slice";
 
 export function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log('Track: Load Theme');
+    dispatch(getTheme({ mode: 'dark' }));
+  }, [dispatch]);
+  console.log('Track: Render App');
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/count" component={CountPage} />
-      </Switch>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/count" component={CountPage} />
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

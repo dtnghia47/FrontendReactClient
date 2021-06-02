@@ -19,11 +19,11 @@ interface Props {
 const ButtonStyled = styled.button<Props>`
   width: 117px;
   height: 32px;
-  border: 1px solid #24a9a7;
   border-radius: 16px;
   opacity: 1;
   background: transparent;
-  color: #24a9a7;
+  color: ${props => props.theme.brandingColors?.primary};
+  border: 1px solid ${props => props.theme.brandingColors?.primary};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? '0.3' : '`')};
   ${props => props.margin && `

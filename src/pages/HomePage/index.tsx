@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, memo, useMemo } from 'react';
+import React, { useCallback, useEffect, memo, useMemo } from 'react';
 import Layout from "../../components/Layout";
 import styled from "styled-components";
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ import {
   selectFilter,
 } from './slice';
 
-export const HomePage = memo(() => {
+export const HomePage = memo((props) => {
   const data = useSelector(selectData);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
@@ -23,13 +23,14 @@ export const HomePage = memo(() => {
 
   const nextPage = useCallback(() => {
     dispatch(incrementPage());
-  }, [dispatch, filter]);
+  }, [dispatch]);
 
   const prevPage = useCallback(() => {
     dispatch(decrementPage());
-  }, [dispatch, filter]);
+  }, [dispatch]);
 
   const emloyess = useMemo(() => data, [data]);
+
   return (
     <>
       <Layout>
@@ -48,9 +49,6 @@ export const HomePage = memo(() => {
     </>
   );
 });
-
-
-// TODO: move color to common
 
 const HomePageWrapper = styled.div`
 `;
