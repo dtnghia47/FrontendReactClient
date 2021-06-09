@@ -3,9 +3,10 @@
  * Layout
  *
  */
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   children?: any;
@@ -13,6 +14,10 @@ interface Props {
 
 export const Layout = memo((props: Props) => {
   const { children } = props;
+  const { i18n } = useTranslation();
+  const handleChangeLanguage = useCallback((e) => {
+    i18n.changeLanguage(e.target.value);
+  }, []);
   return (
     <LayoutWrapper className="page-wrapper">
       <Header>
@@ -20,6 +25,10 @@ export const Layout = memo((props: Props) => {
           <MenuItem exact to="/" activeClassName="active">Home </MenuItem>
           <MenuItem exact to="/count" activeClassName="active">Count </MenuItem>
         </Menu>
+        <select onChange={handleChangeLanguage}>
+          <option value="en">EN</option>
+          <option value="vi">VI</option>
+        </select>
       </Header>
       <Main>{children}</Main>
       {/* footer */}
