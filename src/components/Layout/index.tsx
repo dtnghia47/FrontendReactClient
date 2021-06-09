@@ -22,8 +22,10 @@ export const Layout = memo((props: Props) => {
     <LayoutWrapper className="page-wrapper">
       <Header>
         <Menu>
-          <MenuItem exact to="/" activeClassName="active">Home </MenuItem>
+          <MenuItem exact to="/" activeClassName="active">Dashboard </MenuItem>
+          <MenuItem exact to="/home" activeClassName="active">Home </MenuItem>
           <MenuItem exact to="/count" activeClassName="active">Count </MenuItem>
+          <MenuItem exact to="/persist" activeClassName="active">Persist </MenuItem>
         </Menu>
         <select onChange={handleChangeLanguage}>
           <option value="en">EN</option>
