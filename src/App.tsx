@@ -11,6 +11,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import "./App.scss";
+import "./locales/i18n";
 import { HomePage } from "./pages/HomePage/loadable";
 import { CountPage } from "./pages/CountPage/loadable";
 import { ThemeProvider } from "./styles/theme/provider";

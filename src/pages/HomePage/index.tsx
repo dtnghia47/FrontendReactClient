@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, memo, useMemo } from 'react';
-import Layout from "../../components/Layout";
-import styled from "styled-components";
 import { useDispatch, useSelector } from 'react-redux';
+import styled from "styled-components";
+import { useTranslation } from 'react-i18next';
+
+import Layout from "../../components/Layout";
 import Button from "../../components/Button";
 import Table from "./components/Table";
 import AddNewEmpoyee from "./components/AddNewEmpoyee";
@@ -14,6 +16,7 @@ import {
 } from './slice';
 
 export const HomePage = memo((props) => {
+  const { t, i18n } = useTranslation();
   const data = useSelector(selectData);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
@@ -35,7 +38,7 @@ export const HomePage = memo((props) => {
     <>
       <Layout>
         <h1 className="title-page">
-          Home page
+          {t('Home page')}
         </h1>
         <HomePageWrapper>
           <Table data={emloyess} />
