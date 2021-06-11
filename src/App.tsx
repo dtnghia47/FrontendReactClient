@@ -14,6 +14,7 @@ import "./App.scss";
 import "./locales/i18n";
 import { HomePage } from "./pages/HomePage/loadable";
 import { CountPage } from "./pages/CountPage/loadable";
+import { PersistPage } from "./pages/PersistPage/loadable";
 import { ThemeProvider } from "./styles/theme/provider";
 import { getTheme } from "./styles/theme/slice";
 
@@ -28,8 +29,10 @@ export function App() {
     <ThemeProvider>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={PersistPage} />
+          <Route exact path="/home" component={HomePage} />
           <Route exact path="/count" component={CountPage} />
+          <Route exact path="/persist" component={PersistPage} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
